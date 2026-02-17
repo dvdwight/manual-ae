@@ -1,0 +1,11 @@
+sources:
+  - name: manual
+    database: manual-retention
+    schema: manual
+    tables:
+      - name: raw_customers
+        description: Customer dimension with country
+      - name: raw_acq_orders
+        description: Acquisition orders with taxonomy
+      - name: raw_activity
+        description: Customer subscription activity periods

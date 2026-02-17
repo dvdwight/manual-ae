@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: Staging table for customer dimension data
+    columns:
+      - name: customer_id
+        description: Unique identifier for each customer
+        tests:
+          - unique
+          - not_null
+      - name: customer_country
+        description: Original country field
+        tests:
+          - accepted_values:
+              values: ['Brazil', 'United Kingdom']
+              severity: warn
+      
+  - name: stg_acq_orders
+    description: Staging table for acquisition taxonomy data
+    columns:
+      - name: customer_id
+        description: Customer identifier
+        tests:
+          - not_null
+      - name: taxonomy_business_category_group
+        description: Business category from acquisition
+        tests:
+          - relationships:
+              to: ref('taxonomy_business_category')
+              field: taxonomy_group
+              severity: warn
+      
+  - name: stg_activity
+    description: Staging table for subscription activity data
+    columns:
+      - name: customer_id
+        description: Customer identifier
+        tests:
+          - not_null
+      - name: subscription_id
+        description: Subscription identifier
+        tests:
+          - not_null
+      - name: from_date
+        description: Start date of subscription period
+        tests:
+          - not_null
+      - name: to_date
+        description: End date of subscription period
+        tests:
+          - not_null
+      - name: subscription_days
+        description: Duration of subscription in days
+      - name: cohort_month
+        description: Month of first activity (cohort month)
+      - name: cohort_year
+        description: Year of first activity (cohort year)

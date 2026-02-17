@@ -1,0 +1,11 @@
+[project]
+name = "manual-ae"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dbt-bigquery>=1.11.0",
+    "dbt-core>=1.11.5",
+    "seaborn>=0.13.2",
+]
