@@ -1,14 +1,15 @@
-{{
-    config(
-        materialized='table',
-        partition_by={
-            "field": "activity_month",
-            "data_type": "date",
-            "granularity": "month"
-        },
-        cluster_by=["cohort_month", "customer_country", "business_group"]
-    )
-}}
+{{ config(
+    materialized='table',
+    partition_by={
+        "field": "activity_month",
+        "data_type": "date",
+        "granularity": "month"
+    },
+    cluster_by=["cohort_month", "customer_country", "business_group"],
+    partition_expiration_days=100000
+    
+
+) }}
 
 with customer_monthly_activity as (
     select * from {{ ref('int_customer_activity_monthly') }}
