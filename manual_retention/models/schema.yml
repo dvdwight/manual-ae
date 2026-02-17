@@ -53,6 +53,6 @@ models:
       - name: subscription_days
         description: Duration of subscription in days
       - name: cohort_month
-        description: Month of first activity (cohort month)
+        description: Month (as date) of first activity (cohort month)
       - name: cohort_year
-        description: Year of first activity (cohort year)
+        description: Year (as date) of first activity (cohort year)
