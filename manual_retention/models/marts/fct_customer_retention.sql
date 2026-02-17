@@ -6,7 +6,7 @@
         "granularity": "month"
     },
     cluster_by=["cohort_month", "customer_country", "business_group"],
-    partition_expiration_days=100000
+    partition_expiration_days=20000
     
 
 ) }}
