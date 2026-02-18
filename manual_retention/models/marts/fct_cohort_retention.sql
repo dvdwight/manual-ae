@@ -62,7 +62,15 @@ select
     sum(r.active_customers) over (
         partition by r.cohort_month, r.customer_country, r.business_group
         order by r.months_since_cohort
-    ) as cumulative_active_customers
+    ) as cumulative_active_customers,
+
+    lag(safe_divide(r.active_customers, c.cohort_size)) over (
+         partition by r.cohort_month, r.customer_country, r.business_group order by r.months_since_cohort 
+    ) as previous_retention_rate, 
+    
+    lag(1 - safe_divide(r.active_customers, c.cohort_size)) over 
+    ( partition by r.cohort_month, r.customer_country, r.business_group order by r.months_since_cohort 
+    ) as previous_churn_rate
 
 from retention_by_period r
 left join cohort_sizes c
