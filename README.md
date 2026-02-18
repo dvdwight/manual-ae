@@ -43,6 +43,8 @@ manual-ae/
 │   │   ├── customer_country.csv
 │   │   └── taxonomy_business_category.csv
 │   ├── tests/                     # Data quality tests
+│   │ ├── assert_retained_less_than_previous.sql
+│   │ └── assert_active_user_components.sql
 │   └── dbt_project.yml
 ├── data/                          # Raw data files
 │   ├── acq_orders.csv
