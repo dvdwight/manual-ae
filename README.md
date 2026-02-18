@@ -1,4 +1,4 @@
-# Manual AE - Customer Retention Analytics
+# Analytics Engineering - Customer Retention Analytics
 
 A dbt-based analytics project for analyzing customer retention, cohort retention rates, and monthly metrics across geographic regions and business categories.
 
