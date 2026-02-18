@@ -28,11 +28,11 @@ models:
         tests:
           - relationships:
               to: ref('taxonomy_business_category')
-              field: taxonomy_group
+              field: business_group
               severity: warn
       
   - name: stg_activity
-    description: Staging table for subscription activity data
+    description: Staging table for subscription activity data that also defines cohort fields
     columns:
       - name: customer_id
         description: Customer identifier
@@ -53,6 +53,107 @@ models:
       - name: subscription_days
         description: Duration of subscription in days
       - name: cohort_month
-        description: Month of first activity (cohort month)
+        description: Month (as date) of first activity (cohort month)
       - name: cohort_year
-        description: Year of first activity (cohort year)
+        description: Year (as date) of first activity (cohort year)
+
+  - name: dim_customers
+    description: Dimension table for customers with country and business group
+    columns:
+      - name: customer_id
+        description: Unique identifier for each customer
+        tests:
+          - unique
+          - not_null
+      - name: customer_country
+        description: Country of the customer
+      - name: business_group
+        description: Business group category from acquisition taxonomy
+
+  - name: fct_customer_retention
+    description: Fact table for customer retention analysis at monthly level
+    columns:
+      - name: customer_id
+        description: Unique identifier for each customer
+        tests:
+          - not_null
+      - name: activity_month
+        description: Month of the activity (as date)
+      - name: cohort_month
+        description: Cohort month (as date)
+      - name: cohort_year
+        description: Cohort year (as date)
+      - name: first_activity_date
+        description: Date of first activity
+      - name: customer_country
+        description: Country of the customer
+      - name: business_group
+        description: Business group category from acquisition taxonomy
+      - name: months_since_cohort
+        description: Number of months since cohort month for the activity month
+      - name: is_active
+        description: Flag indicating if the customer was active in the month (1/0)
+      - name: is_cohort_month
+        description: Flag indicating if the activity month is the same as cohort month (1/0)
+      - name: is_retained_from_previous_month
+        description: Flag indicating if the customer was retained from the previous month (1/0)
+      - name: is_reactivation
+        description: Flag indicating if the customer was reactivated after being inactive (1/0)
+
+  - name: fct_cohort_retention
+    description: Fact table for cohort retention analysis at monthly level
+    columns:
+      - name: cohort_month
+        description: Cohort month (as date)
+      - name: customer_country
+        description: Country of the customers in the cohort
+      - name: business_group
+        description: Business group category from acquisition taxonomy for the cohort
+      - name: months_since_cohort
+        description: Number of months since cohort month for the activity month
+      - name: cohort_size
+        description: Total number of customers in the cohort for the activity month
+      - name: active_customers
+        description: Number of customers active in the activity month
+      - name: retained_customers
+        description: Number of customers retained in the activity month
+      - name: reactivated_customers
+        description: Number of customers reactivated in the activity month  
+      - name: retention_rate
+        description: Retention rate for the cohort in the activity month (retained_customers / cohort_size)
+      - name: mom_retention_rate
+        description: Month-over-month retention rate (retained_customers / active_customers in previous month)
+      - name: churn_rate
+        description: Churn rate for the cohort in the activity month (1 - retention_rate)
+      - name: cumulative_active_customers
+        description: Cumulative number of unique active customers in the cohort up to the activity month  
+
+  - name: fct_monthly_metrics
+    description: Fact table for overall monthly metrics
+    columns:
+      - name: activity_month
+        description: Month of the activity (as date)
+      - name: customer_country
+        description: Country of the customers
+      - name: business_group
+        description: Business group category from acquisition taxonomy
+      - name: active_customers
+        description: Number of active customers in the month
+      - name: new_customers
+        description: Number of new customers acquired in the month
+      - name: retained_customers
+        description: Number of customers retained from previous month in the month
+      - name: reactivated_customers
+        description: Number of customers reactivated in the month
+      - name: previous_month_active
+        description: Number of active customers in the previous month
+      - name: churned_customers
+        description: Number of customers who churned (were active previous month, now inactive) in the month
+      - name: retention_rate
+        description: Retention rate for the month (retained_customers / previous_month_active)
+      - name: churn_rate
+        description: Churn rate for the month (churned_customers / previous_month_active)
+      - name: growth_rate
+        description: Growth rate of active customers compared to previous month ((active_customers - previous_month_active) / previous_month_active)
+      - name: acquisition_rate
+        description: Acquisition rate of new customers (new_customers / active_customers)
