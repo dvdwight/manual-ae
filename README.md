@@ -246,14 +246,6 @@ Open `http://localhost:8000` to explore models, columns, and lineage.
 - Partitioning and clustering on fact tables optimize BigQuery costs
 - Use DuckDB for local development to test queries without BigQuery costs
 
-## Future Enhancements
-
-- [ ] Automated scheduling via dbt Cloud or Airflow
-- [ ] Predictive churn modeling
-- [ ] Customer lifetime value (CLV) calculations
-- [ ] Segment-level cohort analysis
-- [ ] Real-time reactivation alerting
-
 ## Support & Resources
 
 - [dbt Documentation](https://docs.getdbt.com/)
