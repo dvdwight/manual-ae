@@ -2,6 +2,10 @@
 
 A dbt-based analytics project for analyzing customer retention, cohort retention rates, and monthly metrics across geographic regions and business categories.
 
+### DAG Visualization
+![dbt DAG](manual_retention/assets/dbt-dag.png)
+
+
 ## Project Overview
 
 This project processes acquisition orders, customer demographics, and activity data to calculate:

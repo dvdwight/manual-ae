@@ -1,0 +1,18 @@
+version: 2
+
+exposures:
+  - name: Retention-Dashboard
+    type: dashboard
+    maturity: low
+    url: https://lookerstudio.google.com/reporting/309a19f5-2cf2-458c-9ddd-86c310af73d7
+    
+    description: "Dashboard for monitoring customer retention metrics."
+
+    depends_on:
+      - ref('fct_cohort_retention')
+      - ref('fct_monthly_metrics')
+      - ref('fct_customer_retention')
+
+    owner:
+      name: David White
+      email: hellodavidwhite@gmail.com

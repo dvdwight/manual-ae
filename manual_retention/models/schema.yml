@@ -129,7 +129,7 @@ models:
         description: Cumulative number of unique active customers in the cohort up to the activity month  
 
   - name: fct_monthly_metrics
-    description: Fact table for overall monthly metrics
+    description: Fact table for overall monthly metrics  
     columns:
       - name: activity_month
         description: Month of the activity (as date)
