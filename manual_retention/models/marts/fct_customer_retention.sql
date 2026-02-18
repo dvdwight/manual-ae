@@ -40,7 +40,7 @@ customer_base as (
         on cma.customer_id = c.customer_id
 ),
 
--- Calculate retention metrics
+-- Calculate retention metrics at activity month level
 retention_metrics as (
     select
         customer_id,
@@ -90,11 +90,11 @@ select
         then 1 
         else 0 
     end as is_retained_from_previous_month,
-    
-    -- Calculate if customer churned (was active, now inactive)
+        
+    -- Calculate if customer churned (was inactive, now active)
     case 
         when previous_activity_month is not null 
-         and previous_activity_month < date_sub(activity_month, interval 1 month)
+        and previous_activity_month < date_sub(activity_month, interval 1 month)
         then 1 
         else 0 
     end as is_reactivation

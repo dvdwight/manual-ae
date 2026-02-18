@@ -8,7 +8,7 @@ with activity as (
     select * from {{ ref('stg_activity') }}
 ),
 
--- Generate all months a customer was active
+/* Generate unique set of months a customer was active */
 customer_months as (
     select distinct
         customer_id,

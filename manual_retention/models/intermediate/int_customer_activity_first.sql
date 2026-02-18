@@ -4,6 +4,7 @@
     )
 }}
 
+/* Generate first activity date and cohort info for each customer_id */
 with activity as (
     select * from {{ ref('stg_activity') }}
 ),
