@@ -144,7 +144,7 @@ models:
       - name: retained_customers
         description: Number of customers retained from previous month in the month
       - name: reactivated_customers
-        description: Number of customers reactivated in the month
+        description: Number of customers reactivated in the month (gap of at least 1 month of inactivity before being active again)
       - name: previous_month_active
         description: Number of active customers in the previous month
       - name: churned_customers
