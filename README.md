@@ -1,6 +1,7 @@
 # Analytics Engineering - Customer Retention Analytics
 
 A dbt-based analytics project for analyzing customer retention, cohort retention rates, and monthly metrics across geographic regions and business categories.
+- data written to **BigQuery** and visualised with **Looker Studio**
 
 ### DAG Visualization
 ![dbt DAG](manual_retention/assets/dbt-dag.png)
