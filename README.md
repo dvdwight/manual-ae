@@ -21,7 +21,6 @@ The project is built with:
 - **dbt** (v1.11+) — Data transformation and testing
 - **BigQuery** — Data warehouse
 - **DuckDB** (v1.4.4+) — Optional local development/testing
-- **Python 3.12+** — Orchestration support
 
 ## Directory Structure
 
