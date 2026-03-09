@@ -2,6 +2,8 @@
 
 A **dbt** based analytics project for analyzing customer retention, cohort retention rates, and monthly metrics across geographic regions and business categories.
 - data written to **BigQuery** and visualised with **Looker Studio**
+[Interactive Looker Studio Report](https://lookerstudio.google.com/reporting/309a19f5-2cf2-458c-9ddd-86c310af73d7)
+
 
 ### Looker Studio
 ![looker studio](manual_retention/assets/looker.png)
