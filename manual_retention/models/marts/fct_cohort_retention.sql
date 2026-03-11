@@ -12,13 +12,8 @@
 }}
 
 /*
- This model calculates cohort retention metrics at the cohort level, 
+ This model aggregates retention metrics at the cohort level, 
  including retention rates, churn rates, and cumulative active customers over time.
-
- It aggregates customer activity data from fct_customer_retention by cohort, country, and business group
- to provide insights into retention patterns across different cohorts, countries, and business groups. 
-
- The model is partitioned by cohort month for efficient querying and analysis.
 */
 
 with retention_data as (
