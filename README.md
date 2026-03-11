@@ -1,7 +1,10 @@
 # Analytics Engineering - Customer Retention Analytics
 
-A dbt-based analytics project for analyzing customer retention, cohort retention rates, and monthly metrics across geographic regions and business categories.
+A **dbt** based analytics project for analyzing customer retention, cohort retention rates, and monthly metrics across geographic regions and business categories.
 - data written to **BigQuery** and visualised with **Looker Studio**
+
+[Link to Looker Studio Report](https://lookerstudio.google.com/reporting/309a19f5-2cf2-458c-9ddd-86c310af73d7)
+
 
 ### Looker Studio
 ![looker studio](manual_retention/assets/looker.png)
@@ -21,7 +24,6 @@ The project is built with:
 - **dbt** (v1.11+) — Data transformation and testing
 - **BigQuery** — Data warehouse
 - **DuckDB** (v1.4.4+) — Optional local development/testing
-- **Python 3.12+** — Orchestration support
 
 ## Directory Structure
 
