@@ -11,6 +11,15 @@
     )
 }}
 
+
+
+/*
+Aggregates customer-level retention data from fct_customer_retention 
+to business/regional monthly metrics.
+Calculates monthly KPIs including retention rate, churn rate, growth rate, 
+and acquisition rate
+*/
+
 with retention_data as (
     select * from {{ ref('fct_customer_retention') }}
 ),

@@ -31,6 +31,15 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   manual_retention:
+    +persist_docs:
+      relation: true
+      columns: true  
     # Config indicated by + and applies to all files under models/staging/
     staging:
       +materialized: view
+
+data_tests:
+  +store_failures: true
+  +schema: _test_failures
+  +dataset_config:
+    location: "europe-west2"      

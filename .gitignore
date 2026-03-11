@@ -1,0 +1,34 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Environment
+.env
+.env.local
+*.secrets
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs and artifacts
+logs/
+*.log
+
+# Project-specific
+notebooks/.ipynb_checkpoints/
+
+# dbt artifacts (if needed outside manual_retention/)
+target/
+dbt_packages/

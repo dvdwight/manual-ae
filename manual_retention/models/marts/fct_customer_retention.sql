@@ -11,6 +11,12 @@
 
 ) }}
 
+/*
+ Joins both intermediate tables and dim customers to calculate customer-level 
+ retention metrics at monthly granularity.
+*/
+
+
 with customer_monthly_activity as (
     select * from {{ ref('int_customer_activity_monthly') }}
 ),
@@ -54,7 +60,7 @@ retention_metrics as (
         -- Calculate months since first activity
         date_diff(activity_month, cohort_month, month) as months_since_cohort,
         
-        -- Determine if customer is active
+        -- Flag to indicate customer is active in this month (since they have activity record)
         1 as is_active,
         
         -- Calculate if customer was active in previous month
